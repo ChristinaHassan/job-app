@@ -1,0 +1,15 @@
+<header class="app-header">
+  <a routerLink="/skills" class="logo">
+    <img src="/connection.png" alt="" class="logo-icon">
+    <span>Job App</span>
+  </a>
+
+  <nav class="links">
+    <a routerLink="/skills" routerLinkActive="active">Skills</a>
+    <a routerLink="/jobs" routerLinkActive="active">Jobs</a>
+  </nav>
+
+  <button *ngIf="showLogout" type="button" class="logout-btn" (click)="logout()">
+    Logout
+  </button>
+</header>

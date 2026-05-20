@@ -1,6 +1,6 @@
 import * as authService from '../services/auth.service.js';
 
-export async function register(req, res) {
+export async function signin(req, res) {
   try {
     const { email, password } = req.body;
 
@@ -10,7 +10,7 @@ export async function register(req, res) {
       });
     }
 
-    const result = await authService.register(email, password);
+    const result = await authService.signin(email, password);
     return res.status(201).json(result);
   } catch (error) {
     if (error.code === '23505') {
@@ -19,10 +19,10 @@ export async function register(req, res) {
       });
     }
 
-    console.error('Register error:', error);
+    console.error('Sign In error:', error);
 
     return res.status(500).json({
-      message: 'User: Failed to register',
+      message: 'User: Failed to signin',
     });
   }
 }

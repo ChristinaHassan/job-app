@@ -1,8 +1,12 @@
-drop table if exists users cascade;
+drop table if existsuser_skills CASCADE;
+drop table if existsjob_skills CASCADE;
+drop table if existsusers CASCADE;
+drop table if existsskills CASCADE;
+drop table if existsjobs CASCADE;
 create table users        
 (
 id serial primary key,
-email varchar not null,
+email varchar not null unique,
 password_hash varchar not null,
 created_at timestamp default now()
 );
@@ -25,11 +29,11 @@ description varchar
 
 create table user_skills   
 (
-    users_id int,
-    skills_id int,
-    constraint pk_user_skills primary key (users_id, skills_id),
-    constraint fk_user_skills_user foreign key (users_id) references users(id) on delete cascade,
-    constraint fk_user_skills_skill foreign key (skills_id) references skills(id) on delete cascade
+    user_id int,
+    skill_id int,
+    constraint pk_user_skills primary key (user_id, skill_id),
+    constraint fk_user_skills_user foreign key (user_id) references users(id) on delete cascade,
+    constraint fk_user_skills_skill foreign key (skill_id) references skills(id) on delete cascade
 );
 
 create table job_skills 

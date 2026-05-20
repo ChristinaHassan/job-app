@@ -22,7 +22,7 @@ export class SigninComponent {
   onSubmit(): void {
     this.error = '';
 
-    this.auth.register(this.email, this.password).subscribe({
+    this.auth.signin(this.email, this.password).subscribe({
       next: (response) => {
         this.auth.saveToken(response.token);
         this.router.navigate(['/skills']);

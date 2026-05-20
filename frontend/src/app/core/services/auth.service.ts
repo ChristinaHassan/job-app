@@ -17,6 +17,10 @@ export class AuthService {
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:3000/api/auth';
 
+
+  isLoggedIn(): boolean {
+  return !!this.getToken();
+  }
   login(email: string, password: string): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/login`, {
       email,
@@ -24,8 +28,8 @@ export class AuthService {
     });
   }
 
-  register(email: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/register`, {
+  signin(email: string, password: string): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/signin`, {
       email,
       password,
     });

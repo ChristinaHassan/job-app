@@ -18,7 +18,7 @@ function toAuthResponse(user) {
   };
 }
 
-export async function register(email, password) {
+export async function signin(email, password) {
   const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
 
   const result = await pool.query(

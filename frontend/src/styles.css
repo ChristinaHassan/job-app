@@ -1,10 +1,78 @@
 @reference "tailwindcss";
 
-
-@theme {
+:root {
   --font-sans: 'Montserrat', sans-serif;
-
+  --primary-color: #2563eb;
+  --header-color: #272729;
+  --text-color: #ffffff;
+  --page-bg-color: #111318;
 }
-.btn-primary {
-  @apply bg-blue-600 text-white px-4 py-2 rounded;
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary-color);
+  color: var(--text-color);
+  padding: 20px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  flex-direction: column; 
+  min-height: 100%;
+}
+
+body {
+  background: var(--page-bg-color);
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  margin: 0;
+}
+
+app-root {
+  background: var(--page-bg-color);
+  display: block;
+  min-height: 100vh;
+}
+
+input {
+  background: var(--page-bg-color);
+  border-radius: 6px;
+  color: var(--text-color);       
+  padding: 10px 12px;
+}
+
+input::placeholder {
+  color: #9ca3af;
+}
+
+button {
+  background: var(--primary-color);
+  border: none;
+  border-radius: 6px;
+  color: var(--text-color);
+  padding: 10px 16px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.login-form,
+.signin-form {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;  
+  gap: 12px;
 }
