@@ -8,6 +8,8 @@ import { routes } from './app.routes';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { AuthEffects } from './store/auth/auth.effects';
 import { authReducer } from './store/auth/auth.reducers';
+import { SkillsEffects } from './store/skills/skills.effects';
+import { skillsReducer } from './store/skills/skills.reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,8 +18,8 @@ export const appConfig: ApplicationConfig = {
       withFetch(),
       withInterceptors([authInterceptor])
     ),
-    provideStore({ auth: authReducer }),
-    provideEffects([AuthEffects]),
+    provideStore({ auth: authReducer, skills: skillsReducer }),
+    provideEffects([AuthEffects, SkillsEffects]),
     provideStoreDevtools(),
   ],
 };

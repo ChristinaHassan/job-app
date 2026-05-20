@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 
-import { Skill, SkillsService } from '../../core/services/skills.services';
+import { Skill, SkillsService } from '../../core/services/skills.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
