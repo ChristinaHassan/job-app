@@ -10,6 +10,8 @@ import { AuthEffects } from './store/auth/auth.effects';
 import { authReducer } from './store/auth/auth.reducers';
 import { SkillsEffects } from './store/skills/skills.effects';
 import { skillsReducer } from './store/skills/skills.reducers';
+import { JobsEffects } from './store/jobs/jobs.effects';
+import { jobsReducer } from './store/jobs/jobs.reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,8 +20,8 @@ export const appConfig: ApplicationConfig = {
       withFetch(),
       withInterceptors([authInterceptor])
     ),
-    provideStore({ auth: authReducer, skills: skillsReducer }),
-    provideEffects([AuthEffects, SkillsEffects]),
+    provideStore({ auth: authReducer, skills: skillsReducer, jobs: jobsReducer }),
+    provideEffects([AuthEffects, SkillsEffects, JobsEffects]),
     provideStoreDevtools(),
   ],
 };
