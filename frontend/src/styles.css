@@ -1,5 +1,10 @@
 @reference "tailwindcss";
 
+
+@theme {
+  --font-sans: 'Montserrat', sans-serif;
+
+}
 .btn-primary {
   @apply bg-blue-600 text-white px-4 py-2 rounded;
 }

@@ -1,0 +1,7 @@
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 20px;
+  list-style-type: none;
+}
