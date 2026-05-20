@@ -10,9 +10,15 @@ export async function register(req, res) {
       });
     }
 
-  const result = await authService.login(email, password);
-   return res.status(200).json(result);
+    const result = await authService.register(email, password);
+    return res.status(201).json(result);
   } catch (error) {
+    if (error.code === '23505') {
+      return res.status(409).json({
+        message: 'Email already exists',
+      });
+    }
+
     console.error('Register error:', error);
 
     return res.status(500).json({

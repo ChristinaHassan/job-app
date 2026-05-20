@@ -1,17 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideRouter } from '@angular/router';
 
-import { Signin } from './signin';
+import { SigninComponent } from './signin';
 
 describe('Signin', () => {
-  let component: Signin;
-  let fixture: ComponentFixture<Signin>;
+  let component: SigninComponent;
+  let fixture: ComponentFixture<SigninComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Signin],
+      imports: [SigninComponent],
+      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Signin);
+    fixture = TestBed.createComponent(SigninComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

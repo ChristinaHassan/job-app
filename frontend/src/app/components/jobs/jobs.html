@@ -1,1 +1,21 @@
-<p>jobs works!</p>
+<div class="jobs-page">
+  <h1>Matching jobs</h1>
+
+  <p *ngIf="loading">Loading...</p>
+
+  <p *ngIf="!loading && jobs.length === 0" class="empty">
+    No matches yet. <a routerLink="/skills">Add skills</a> to see jobs.
+  </p>
+
+  <ul class="jobs-list">
+    <li *ngFor="let job of jobs" class="job-card">
+      <div class="job-header">
+        <h2>{{ job.title }}</h2>
+        <span class="match-count">{{ job.matched_count }} skills match</span>
+      </div>
+      <p>{{ job.description }}</p>
+    </li>
+  </ul>
+
+  <a routerLink="/skills" class="back-link">← Edit your skills</a>
+</div>
