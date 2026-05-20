@@ -10,9 +10,8 @@ export async function register(req, res) {
       });
     }
 
-    const user = await authService.register(email, password);
-
-    return res.status(201).json({ user });
+  const result = await authService.login(email, password);
+   return res.status(200).json(result);
   } catch (error) {
     console.error('Register error:', error);
 
@@ -23,23 +22,21 @@ export async function register(req, res) {
 }
 
 export async function login(req, res) {
-    try {
+  try {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({
-        message: 'Both equired',
-      });
+      return res.status(400).json({ error: 'Email and password required' });
     }
 
-    const user = await authService.login(email, password);
+    const result = await authService.login(email, password);
+    return res.json(result);
+  } catch (err) {
+    if (err.status === 401) {
+      return res.status(401).json({ error: err.message });
+    }
 
-    return res.status(200).json({ user });
-  } catch (error) {
-    console.error('Login error:', error);
-
-    return res.status(500).json({
-      message: 'User: Failed to login',
-    });
+    console.error('Login error:', err);
+    return res.status(500).json({ error: 'Internal server error' });
   }
 }
